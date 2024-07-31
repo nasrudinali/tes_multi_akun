@@ -127,7 +127,8 @@ while True:
         print("level sudah mencapai:",valuelv)
         time.sleep(1)
         
-        if cun > 100000:    
+        if cun > 100000:
+            print("jumlah money:",cun) 
             buy = driver.find_element(By.XPATH,buybox)
             buy.click()
             print("berhasil buy box")
