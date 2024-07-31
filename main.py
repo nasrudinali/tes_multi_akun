@@ -7,9 +7,10 @@ url = [
 tapsemua = '/html/body/div[1]/div/div/div[2]/div/div[2]/div[1]/img[1]'
 prize = '/html/body/div[1]/div/div/div[2]/div/div[2]/div[2]/div[3]/img'
 buybox = '/html/body/div[1]/div/div/div[1]/div/div/div/div/div/div[2]/div[2]/div[3]/div/span'
-tap = '/html/body/div[1]/div/div/div[2]/div/div[2]/div[1]/img[2]'
+tap = '/html/body/div[1]/div/div/div[1]/div/div/div/div/div[2]/div[1]'
 home = '/html/body/div[1]/div/div/div[2]/div/div[2]/div[2]/div[1]/img'
 upmax = '/html/body/div[1]/div/div/div[1]/div/div/div/div/div/div[2]/div[1]/div[4]'
+lv = '/html/body/div[1]/div/div/div[1]/div/div/div/div/div[2]/div[2]'
        
 def hitung_mundur(detik):
     while detik:
@@ -20,7 +21,7 @@ def hitung_mundur(detik):
         detik -= 1
     
     print("Waktu telah habis!")
-    
+detik = 5
 index = 0
 while True:
     try:
@@ -70,34 +71,73 @@ while True:
         line = url[index]
         index += 1
         print("Akun", index)
-        time.sleep(5)
+        time.sleep(1)
         if index == len(url):
             index = 0
         
         driver.get(line)
         print("berhasil login")
-        time.sleep(5)
+        time.sleep(1)
         awal = driver.find_element(By.XPATH,home)
         awal.click()
         print("menu home")
-        time.sleep(5)
-        claim = driver.find_element(By.XPATH,tapsemua)
-        claim.click()
-        print("berhasil tap tap")
-        time.sleep(5)
+        time.sleep(1)
+        claim = driver.find_element(By.XPATH,tap)
+        for i in range(100):
+            claim.click()
+            time.sleep(0.0000001)
+            print("berhasil tap tap")
+        time.sleep(1)
         hadiah = driver.find_element(By.XPATH,prize)
         hadiah.click()
         print("menu prize")
         time.sleep(5)
-        maxpet = driver.find_element(By.XPATH,upmax)
-        maxpet.click()
-        print("berhasil up lv pet")
-        time.sleep(5)
-        buy = driver.find_element(By.XPATH,buybox)
-        buy.click()
-        print("berhasil buy box")
-        time.sleep(5)
-        detik = 5
+        
+        #perbaikan buy pet otomatis
+        hargapet = '/html/body/div[1]/div/div/div[1]/div/div/div/div/div/div[2]/div[1]/div[3]/div/div[2]/div/div'
+        harga = driver.find_element(By.XPATH,hargapet)
+        hrg = int(harga.text.replace(',' , ''))
+        
+        cuan = '/html/body/div[1]/div/div/div[1]/div/div/div/div/div/div[1]/div/div/div[2]/div[2]/div[1]/div/div/div'
+        hrgcuan = driver.find_element(By.XPATH,cuan)
+        cun = int(hrgcuan.text.replace(',' , ''))
+        
+        lvakun = '/html/body/div[1]/div/div/div[1]/div/div/div/div/div/div[1]/div/div/div[1]/div'
+        akun = driver.find_element(By.XPATH,lvakun)
+        valuelv = int(akun.text.replace('Lv: ', ''))
+        
+        if valuelv < 50:
+            print("harga pet:",hrg)
+            maxpet = driver.find_element(By.XPATH,upmax)
+            if cun > hrg:
+                maxpet.click()
+                print("berhasil up lv pet")
+                time.sleep(1)
+            else:
+                print("jumlah money:",cun)
+                time.sleep(1)
+                print("money kurang untuk up pet")
+                time.sleep(1)
+                print("ganti akun selanjutnya")
+                driver.close()
+                time.sleep(1)
+                hitung_mundur(detik)
+                driver.get(line)
+                
+        print("level sudah mencapai:",valuelv)
+        time.sleep(1)
+        
+        if cun > 100000:    
+            buy = driver.find_element(By.XPATH,buybox)
+            buy.click()
+            print("berhasil buy box")
+            time.sleep(1)
+        else:
+            print("jumlah money:",cun)
+            time.sleep(1)
+            print("money kurang untuk buy box")
+            time.sleep(1)
+        
         hitung_mundur(detik)
         driver.close()
     except:
