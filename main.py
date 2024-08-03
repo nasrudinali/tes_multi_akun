@@ -1,11 +1,12 @@
 url = [
 
-
+"https://djdog.io/dog#tgWebAppData=user%3D%257B%2522id%2522%253A1602902444%252C%2522first_name%2522%253A%2522sarudkecil%2520%2524PINK%2522%252C%2522last_name%2522%253A%2522%2522%252C%2522username%2522%253A%2522Sarudkecil03%2522%252C%2522language_code%2522%253A%2522id%2522%252C%2522allows_write_to_pm%2522%253Atrue%257D%26chat_instance%3D4968610452872383535%26chat_type%3Dsender%26auth_date%3D1722273330%26hash%3D03b34fa4ad917b043361524c447f1b7b9f229c0f9272f34080c519c8effb773a&tgWebAppVersion=7.6&tgWebAppPlatform=weba&tgWebAppThemeParams=%7B%22bg_color%22%3A%22%23ffffff%22%2C%22text_color%22%3A%22%23000000%22%2C%22hint_color%22%3A%22%23707579%22%2C%22link_color%22%3A%22%233390ec%22%2C%22button_color%22%3A%22%233390ec%22%2C%22button_text_color%22%3A%22%23ffffff%22%2C%22secondary_bg_color%22%3A%22%23f4f4f5%22%2C%22header_bg_color%22%3A%22%23ffffff%22%2C%22accent_text_color%22%3A%22%233390ec%22%2C%22section_bg_color%22%3A%22%23ffffff%22%2C%22section_header_text_color%22%3A%22%23707579%22%2C%22subtitle_text_color%22%3A%22%23707579%22%2C%22destructive_text_color%22%3A%22%23e53935%22%7D",
+"https://djdog.io/dog#tgWebAppData=query_id%3DAAEyjXYTAwAAADKNdhM-GoDd%26user%3D%257B%2522id%2522%253A6768987442%252C%2522first_name%2522%253A%2522saroed9%2522%252C%2522last_name%2522%253A%2522%2522%252C%2522username%2522%253A%2522saroed9%2522%252C%2522language_code%2522%253A%2522en%2522%252C%2522allows_write_to_pm%2522%253Atrue%257D%26auth_date%3D1722273436%26hash%3D3526d94fd2834dab3dd81b59a4af024f27b154d9b3d7858fe4cda96c42b426c3&tgWebAppVersion=7.6&tgWebAppPlatform=weba&tgWebAppThemeParams=%7B%22bg_color%22%3A%22%23ffffff%22%2C%22text_color%22%3A%22%23000000%22%2C%22hint_color%22%3A%22%23707579%22%2C%22link_color%22%3A%22%233390ec%22%2C%22button_color%22%3A%22%233390ec%22%2C%22button_text_color%22%3A%22%23ffffff%22%2C%22secondary_bg_color%22%3A%22%23f4f4f5%22%2C%22header_bg_color%22%3A%22%23ffffff%22%2C%22accent_text_color%22%3A%22%233390ec%22%2C%22section_bg_color%22%3A%22%23ffffff%22%2C%22section_header_text_color%22%3A%22%23707579%22%2C%22subtitle_text_color%22%3A%22%23707579%22%2C%22destructive_text_color%22%3A%22%23e53935%22%7D",
 
 ]
 
 tapsemua = '/html/body/div[1]/div/div/div[2]/div/div[2]/div[1]/img[1]'
-prize = '/html/body/div[1]/div/div/div[2]/div/div[2]/div[2]/div[3]/img'
+prize = '/html/body/div[1]/div/div/div[2]/div/div[2]/div[2]/div[4]/img'
 buybox = '/html/body/div[1]/div/div/div[1]/div/div/div/div/div/div[2]/div[2]/div[3]/div/span'
 tap = '/html/body/div[1]/div/div/div[1]/div/div/div/div/div[2]/div[1]'
 home = '/html/body/div[1]/div/div/div[2]/div/div[2]/div[2]/div[1]/img'
@@ -33,6 +34,8 @@ while True:
         import re
         from selenium.webdriver.support.ui import WebDriverWait
         from selenium.webdriver.common.keys import Keys
+        from colorama import init, Fore, Style
+        import random
 
 # Set up Chrome options
         chrome_options = webdriver.ChromeOptions()
@@ -86,11 +89,15 @@ while True:
         for i in range(100):
             claim.click()
             time.sleep(0.0000001)
-            print("berhasil tap tap")
+            available_colors = [Fore.RED, Fore.GREEN, Fore.YELLOW, Fore.BLUE, Fore.MAGENTA, Fore.CYAN]
+            random_color = random.choice(available_colors)
+            print(f"\r{random_color+Style.BRIGHT}berhasil tap tap")
         time.sleep(1)
         hadiah = driver.find_element(By.XPATH,prize)
         hadiah.click()
         print("menu prize")
+        print(index)
+        print(len(url))
         time.sleep(5)
         
         #perbaikan buy pet otomatis
@@ -139,7 +146,11 @@ while True:
             print("money kurang untuk buy box")
             time.sleep(1)
         
-        hitung_mundur(detik)
-        driver.close()
+        if index == 0:
+            hitung_mundur(detik)
+            driver.close()
+        else:
+            print("Ganti akun selanjutnya")
+            driver.close()
     except:
         pass
