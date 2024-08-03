@@ -3,3 +3,4 @@ https://djdog.io/dog#tgWebAppData=query_id%3DAAEyjXYTAwAAADKNdhM-GoDd%26user%3D%
 hrgpet = /html/body/div[1]/div/div/div[1]/div/div/div/div/div/div[2]/div[1]/div[3]/div/div[2]/div/div
 cuan = /html/body/div[1]/div/div/div[1]/div/div/div/div/div/div[1]/div/div/div[2]/div[2]/div[1]/div/div/div
 lv = /html/body/div[1]/div/div/div[1]/div/div/div/div/div/div[1]/div/div/div[1]/div
+/html/body/div[1]/div/div/div[2]/div/div[2]/div[2]/div[4]/img
