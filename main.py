@@ -142,7 +142,7 @@ while True:
             time.sleep(1)
             print("Jumlah koin :",money)
             time.sleep(1)
-            if ttl < 11:
+            if ttl < 101:
                 if money > 100000:
                     buy.click()
                     print("berhasil buy box")
@@ -154,7 +154,7 @@ while True:
                 print("Box sudah cukup banyak bosku")
                 time.sleep(1)
         
-        detik = 1800
+        detik = 3600
         if index == len(url):
             hitung_mundur(detik)
             index = 0
