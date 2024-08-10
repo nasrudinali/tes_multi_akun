@@ -210,7 +210,7 @@ while True:
                 print("Box sudah cukup banyak bosku")
                 time.sleep(1)
         
-        detik = 3600
+        detik = 25200
         if index == len(url):
             hitung_mundur(detik)
             index = 0
