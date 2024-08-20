@@ -144,13 +144,17 @@ while True:
         print("menu game")
         time.sleep(2)
         
+        claimall = driver.find_element(By.XPATH,tapsemua)
         claim = driver.find_element(By.XPATH,tap)
-        for i in range(1200):
-            claim.click()
-            time.sleep(0.000000001)
-            available_colors = [Fore.RED, Fore.GREEN, Fore.YELLOW, Fore.BLUE, Fore.MAGENTA, Fore.CYAN]
-            random_color = random.choice(available_colors)
-            print(f"{random_color+Style.BRIGHT}berhasil tap tap", end="\r")
+        
+        claimall.click()
+        print("Berhasil Claim Semua")
+        #for i in range(1200):
+         #   claim.click()
+          #  time.sleep(0.000000001)
+           # available_colors = [Fore.RED, Fore.GREEN, Fore.YELLOW, Fore.BLUE, Fore.MAGENTA, Fore.CYAN]
+            #random_color = random.choice(available_colors)
+            #print(f"{random_color+Style.BRIGHT}berhasil tap tap", end="\r")
         
         time.sleep(1)
         hadiah = driver.find_element(By.XPATH,prize)
@@ -198,7 +202,7 @@ while True:
             time.sleep(1)
             print("Jumlah koin :",money)
             time.sleep(1)
-            if ttl < 101:
+            if ttl < 51:
                 if money > 100000:
                     buy.click()
                     print("berhasil buy box")
@@ -210,7 +214,7 @@ while True:
                 print("Box sudah cukup banyak bosku")
                 time.sleep(1)
         
-        detik = 25200
+        detik = 3600
         if index == len(url):
             hitung_mundur(detik)
             index = 0
